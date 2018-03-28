@@ -1,0 +1,12 @@
+---
+layout: default
+id: overview
+---
+
+{% assign template-pages = site.pages | where: "layout", "templates" %}
+
+<nav class="home-nav">
+  {% for page in template-pages %}
+    <div class="home-nav__wrap"><a class="home-nav__link" href="{{site.baseurl}}{{page.url}}">{{page.title}}</a></div>
+  {% endfor %}
+</nav>

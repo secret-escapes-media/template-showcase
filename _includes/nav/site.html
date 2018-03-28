@@ -1,0 +1,20 @@
+{% assign template-pages = site.pages | where: "layout", "templates" %}
+
+{% for template-type in template-pages %}
+  <div class="nav">
+    <a class="nav__page{% if page.id == template-type.id %} nav__page--active{% endif %}" href="{{site.baseurl}}{{template-type.url}}">{{template-type.title}}</a>
+    <div class="hpad--sm vpad--md {% if page.id == template-type.id %}show{% else %}hide{% endif %}">
+      {% for template-group in template-type.templates %}
+      <ul class="nav__list">
+        <li class="nav__type"><a class="nav__type-link" href="{{site.baseurl}}{{template-type.url}}#{{template-group.id}}">{{template-group.title}}</a>
+          <ul class="nav__template-list">
+            {% for template-category in template-group.categories %}
+            <li class="nav__template"><a class="nav__template-link" href="{{site.baseurl}}{{template-type.url}}#{{template-category.id}}">{{template-category.title}}</a></li>
+            {% endfor %}
+          </ul>
+        </li>
+      </ul>
+      {% endfor %}
+    </div>
+  </div>
+{% endfor %}

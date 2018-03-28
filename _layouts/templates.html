@@ -1,0 +1,37 @@
+---
+layout: default
+---
+
+<nav class="page-nav">
+  {% include nav/site.html %}
+</nav>
+
+<article class="page-content">
+
+  {% for template-group in page.templates %}
+  <div id="{{template-group.id}}" class="text--center vpad--xxxl bg--light">
+    <div class="container">
+      <h1 class="core-title core-title--xxxl">{{template-group.title}}</h1>
+      <div class="container container-no-padding container--lg">
+        <p class="text--lg space--sm">{{template-group.description}}</p>
+      </div>
+    </div>
+  </div>
+
+    {% for template-category in template-group.categories %}
+      <!-- shows the scaled down site with a heading & iframe -->
+
+      <div id="{{template-category.id}}" class="vpad--xxl">
+        <div class="container container--xxl">
+          <h2 class="core-title core-title--lg">{{template-category.title}}</h2>
+          <p class="text--lg space--xxs">{{template-category.description}} &nbsp; <a href="{{page.template-url}}{{template-category.url}}" target="_blank">View&nbsp;in&nbsp;new&nbsp;tab&nbsp;➠</a></p>
+          <div class="space--lg"></div>
+          <div class="iframe__wrap">
+            <iframe class="iframe" src="{{page.template-url}}{{template-category.url}}"></iframe>
+          </div>
+        </div>
+      </div>
+    {% endfor %}
+
+  {% endfor %}
+</article>

@@ -1,0 +1,102 @@
+// general styles for the project that wouldn't be a reuseable component
+
+.hide { display: none;}
+.show { display: block;}
+
+.home-nav {
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  &__wrap {
+    position: relative;
+    height: 100%;
+    width: 50%;
+    color: white;
+    background-color: $grey-darkest;
+    @include transition;
+    &:hover { background-color: $grey-darker; }
+  }
+  &__link {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: $s7;
+    font-weight: 200;
+    @include transition;
+    &:hover { transform: scale(1.25); color: $orange; }
+  }
+  overflow: hidden;
+}
+
+$page-nav-width: 200px;
+
+.page-nav {
+  position: fixed;
+  top: 0;
+  left: auto;
+  right: 0;
+  bottom: 0;
+  width: $page-nav-width;
+  background-color: $grey-lighter;
+  overflow-y: auto;
+}
+
+.page-content {
+  margin-right: $page-nav-width;
+}
+
+$iframe-width: 900px;
+$iframe-height: 600px;
+$iframe-border: 20px;
+
+.iframe {
+  &__wrap {
+    width: $iframe-width;
+    height: $iframe-height;
+    border: 20px solid $grey-darker;
+    border-radius: 20px;
+    background-color: $grey-darker;
+    overflow: hidden;
+  }
+  $scaled-width: ($iframe-width - ($iframe-border * 2)) * 2;
+  $scaled-height: ($iframe-height - ($iframe-border * 2)) * 2;
+  width: $scaled-width;
+  height: $scaled-height;
+  transform-origin: 0 0;
+  transform: scale(.5);
+}
+
+.nav {
+  &__page {
+    display: block;
+    padding: $s2;
+    font-size: $s1;
+    font-weight: 200;
+    text-align: center;
+    color: $white;
+    background-color: $grey-light;
+    &--active { background-color: $grey-darker; }
+  }
+  &__type {
+    list-style: none;
+    margin-left: 0;
+    font-size: $s2;
+  }
+  &__list + &__list {
+    margin-top: $s2;
+  }
+  &__template-list {
+    margin-top: $s-4;
+  }
+  &__template {
+    // list-style: none;
+    font-size: $s0;
+  }
+}
+
